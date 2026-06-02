@@ -5,26 +5,33 @@ var game_state = GAMESTATE.Dead
 
 const enemy_scene = preload("res://enemy.tscn")
 
+var score = 0
+
 func _ready() -> void:
 	$Player.died.connect(_on_player_died)
 	$Player.visible = false
 	$Player.move = false
-	$Menu.visible = true
+	$Menu/Button.visible = true
+	$Menu/Label.visible = false
 
 
 func _on_button_pressed() -> void:
 	game_state = GAMESTATE.Play
+	score = 0
 	$Player.position = Vector2(574, 325)
 	$Player.visible = true
 	$Player.move = true
-	$Menu.visible = false
+	$Menu/Button.visible = false
+	$Menu/Label.visible = true
+	display_score()
 	$Timer.start()
 
 func _on_player_died():
 	game_state = GAMESTATE.Dead
 	$Player.visible = false
 	$Player.move = false
-	$Menu.visible = true
+	$Menu/Button.visible = true
+	$Menu/Label.visible = false
 	$Timer.stop()
 
 func generate_position(new_enemy):
@@ -56,3 +63,8 @@ func _on_timer_timeout() -> void:
 	var new_enemy = enemy_scene.instantiate()
 	generate_position(new_enemy)
 	add_child(new_enemy)
+	score += 1
+	display_score()
+	
+func display_score():
+	$Menu/Label.text = "Score: " + str(score)

@@ -10,6 +10,28 @@ radius = 31.04835
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 29.15476
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lquwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D" unique_id=647091507]
 script = ExtResource("1_h2yge")
 
@@ -23,17 +45,21 @@ offset_bottom = 379.0
 theme_override_font_sizes/font_size = 52
 text = "Play"
 
+[node name="Label" type="Label" parent="Menu" unique_id=1734208949]
+offset_left = 452.0
+offset_top = 20.0
+offset_right = 680.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 28
+text = "Nigga"
+horizontal_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=457960801]
 position = Vector2(576, 322)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=733660621]
 position = Vector2(574, 325)
 script = ExtResource("2_1bvp3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=241919846]
-position = Vector2(0, 1)
-scale = Vector2(4.6875, 4.34375)
-texture = ExtResource("3_lquwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2007884359]
 position = Vector2(-1, 5)
@@ -46,6 +72,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D" unique_id=674773982 groups=["enemy"]]
 position = Vector2(-3, 4)
 shape = SubResource("CircleShape2D_lquwl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1905442977]
+position = Vector2(-2.9999914, 0.9999962)
+scale = Vector2(4.5624995, 4.4375)
+sprite_frames = SubResource("SpriteFrames_lquwl")
 
 [node name="Timer" type="Timer" parent="." unique_id=1336936813]
 wait_time = 0.5

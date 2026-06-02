@@ -6,6 +6,28 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 size = Vector2(67, 67)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi2p4"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iifgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gyqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi2p4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1081828792 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_4gyqm")
@@ -14,13 +36,13 @@ script = ExtResource("1_4gyqm")
 position = Vector2(89.5, -85.5)
 shape = SubResource("RectangleShape2D_272bh")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=962730550]
-position = Vector2(89.50001, -77)
-scale = Vector2(6.5937505, 5.8125)
-texture = ExtResource("2_qi2p4")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1986158552]
 position = Vector2(43, -45)
 rect = Rect2(12, -76, 69, 69)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=301048877]
+position = Vector2(90, -76)
+scale = Vector2(6.5, 6.21875)
+sprite_frames = SubResource("SpriteFrames_iifgy")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

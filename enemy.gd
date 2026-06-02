@@ -3,8 +3,10 @@ extends CharacterBody2D
 var speed = 300
 var direction = Vector2.ZERO
 
+@onready var sprite = $AnimatedSprite2D
+
 func _ready():
-	pass
+	sprite.play("default")
 
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed

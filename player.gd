@@ -4,6 +4,8 @@ var speed = 300
 var move = false
 signal died
 
+@onready var sprite = $AnimatedSprite2D
+
 func _physics_process(delta: float) -> void:
 	if move:
 		velocity = Vector2.ZERO
@@ -15,6 +17,10 @@ func _physics_process(delta: float) -> void:
 			velocity.x -= speed
 		if Input.is_action_pressed("go_right"):
 			velocity.x += speed
+		if velocity != Vector2.ZERO:
+			sprite.play("default")
+		else:
+			sprite.stop()
 	move_and_slide()
 
 
