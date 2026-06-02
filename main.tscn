@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cmpapwyc6jwba"]
+
+[ext_resource type="Script" uid="uid://dms1pxanx6gl4" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://b3c7n4pac05sf" path="res://player.gd" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ygsbhghac5mu" path="res://player.png" id="3_lquwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 31.04835
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 29.15476
+
+[node name="Main" type="Node2D" unique_id=647091507]
+script = ExtResource("1_h2yge")
+
+[node name="Menu" type="CanvasLayer" parent="." unique_id=425165346]
+
+[node name="Button" type="Button" parent="Menu" unique_id=1418550233]
+offset_left = 350.0
+offset_top = 275.0
+offset_right = 807.0
+offset_bottom = 379.0
+theme_override_font_sizes/font_size = 52
+text = "Play"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=457960801]
+position = Vector2(576, 322)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=733660621]
+position = Vector2(574, 325)
+script = ExtResource("2_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=241919846]
+position = Vector2(0, 1)
+scale = Vector2(4.6875, 4.34375)
+texture = ExtResource("3_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2007884359]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="Area2D" type="Area2D" parent="Player" unique_id=1447663076]
+position = Vector2(1, 1)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D" unique_id=674773982 groups=["enemy"]]
+position = Vector2(-3, 4)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="Timer" type="Timer" parent="." unique_id=1336936813]
+wait_time = 0.5
+
+[connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
