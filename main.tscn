@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dms1pxanx6gl4" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://b3c7n4pac05sf" path="res://player.gd" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://ygsbhghac5mu" path="res://player.png" id="3_lquwl"]
+[ext_resource type="AudioStream" uid="uid://dbpkroe5isn6a" path="res://reddodge.wav" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://fthy5rdr8jr5" path="res://death.wav" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://bc8mxp023svmv" path="res://play.wav" id="6_272bh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
 radius = 31.04835
@@ -80,6 +83,17 @@ sprite_frames = SubResource("SpriteFrames_lquwl")
 
 [node name="Timer" type="Timer" parent="." unique_id=1336936813]
 wait_time = 0.5
+
+[node name="Background" type="AudioStreamPlayer2D" parent="." unique_id=1055954310]
+stream = ExtResource("4_1bvp3")
+volume_db = -5.0
+autoplay = true
+
+[node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=393759928]
+stream = ExtResource("5_7mycd")
+
+[node name="Press" type="AudioStreamPlayer2D" parent="." unique_id=1489302200]
+stream = ExtResource("6_272bh")
 
 [connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]

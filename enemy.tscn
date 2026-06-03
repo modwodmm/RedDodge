@@ -33,7 +33,7 @@ collision_layer = 2
 script = ExtResource("1_4gyqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1008139820]
-position = Vector2(89.5, -85.5)
+position = Vector2(90, -87)
 shape = SubResource("RectangleShape2D_272bh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1986158552]
@@ -41,7 +41,7 @@ position = Vector2(43, -45)
 rect = Rect2(12, -76, 69, 69)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=301048877]
-position = Vector2(90, -76)
+position = Vector2(90, -77)
 scale = Vector2(6.5, 6.21875)
 sprite_frames = SubResource("SpriteFrames_iifgy")
 
