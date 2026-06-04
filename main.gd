@@ -7,24 +7,27 @@ const enemy_scene = preload("res://enemy.tscn")
 
 var score = 0
 
+var menu_scene = preload("res://menu.tscn")
+var menu_instance
+
 #When game starts
 func _ready() -> void:
+	menu_instance = menu_scene.instantiate()
+	$CanvasLayer.add_child(menu_instance)
+	menu_instance.play.connect(_on_play)
 	$Background.play()
 	$Player.died.connect(_on_player_died)
 	$Player.visible = false
 	$Player.move = false
-	$Menu/Button.visible = true
-	$Menu/Label.visible = false
 
 #When "Play" is pressed
-func _on_button_pressed() -> void:
+func _on_play() -> void:
 	game_state = GAMESTATE.Play
 	$Press.play()
 	$Background.stop()
 	score = 0
 	$Player.reset_player()
-	$Menu/Button.visible = false
-	$Menu/Label.visible = true
+	menu_instance.visible = false
 	display_score()
 	$Timer.start()
 
@@ -35,8 +38,7 @@ func _on_player_died():
 	$Death.play()
 	$Player.visible = false
 	$Player.move = false
-	$Menu/Button.visible = true
-	$Menu/Label.visible = false
+	menu_instance.visible = true
 	$Timer.stop()
 
 #Generates enemies position
@@ -74,5 +76,5 @@ func _on_timer_timeout() -> void:
 	
 #Displays score
 func display_score():
-	$Menu/Label.text = "Score: " + str(score)
+	$Label.text = "Score: " + str(score)
 	

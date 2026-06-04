@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dbpkroe5isn6a" path="res://reddodge.wav" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://fthy5rdr8jr5" path="res://death.wav" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bc8mxp023svmv" path="res://play.wav" id="6_272bh"]
+[ext_resource type="Script" uid="uid://b2si7w13wo1o7" path="res://canvas_layer.gd" id="7_272bh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
 radius = 31.04835
@@ -37,25 +38,6 @@ animations = [{
 
 [node name="Main" type="Node2D" unique_id=647091507]
 script = ExtResource("1_h2yge")
-
-[node name="Menu" type="CanvasLayer" parent="." unique_id=425165346]
-
-[node name="Button" type="Button" parent="Menu" unique_id=1418550233]
-offset_left = 350.0
-offset_top = 275.0
-offset_right = 807.0
-offset_bottom = 379.0
-theme_override_font_sizes/font_size = 52
-text = "Play"
-
-[node name="Label" type="Label" parent="Menu" unique_id=1734208949]
-offset_left = 452.0
-offset_top = 20.0
-offset_right = 680.0
-offset_bottom = 75.0
-theme_override_font_sizes/font_size = 28
-text = "Nigga"
-horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=457960801]
 position = Vector2(576, 322)
@@ -95,6 +77,20 @@ stream = ExtResource("5_7mycd")
 [node name="Press" type="AudioStreamPlayer2D" parent="." unique_id=1489302200]
 stream = ExtResource("6_272bh")
 
-[connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1275794891]
+script = ExtResource("7_272bh")
+
+[node name="Label" type="Label" parent="." unique_id=1811261336]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 473.0
+offset_right = 690.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bvfq3lu2e6cm7"]
+
+[ext_resource type="Script" uid="uid://cadbfgiwl86fk" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://0xclyfaioc0s" path="res://menu_background.png" id="1_ouk20"]
+[ext_resource type="FontFile" uid="uid://dyg02yorgy7jm" path="res://Gokart Bubble.otf" id="2_mae5d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4hy44"]
+texture = ExtResource("1_ouk20")
+modulate_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytr4m"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+
+[node name="Menu" type="Control" unique_id=7621464]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="Panel" type="Panel" parent="." unique_id=1685795647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4hy44")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=444717142]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -42.0
+offset_right = 135.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1166201232]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_ytr4m")
+text = "Play"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=2092068751]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_ytr4m")
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=839260499]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.0
+offset_top = 87.0
+offset_right = 302.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.101960786, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 82
+text = "RED DODGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
