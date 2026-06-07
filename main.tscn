@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dms1pxanx6gl4" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://b3c7n4pac05sf" path="res://player.gd" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://e5dso6pqsr7k" path="res://game_background.png" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ygsbhghac5mu" path="res://player.png" id="3_lquwl"]
 [ext_resource type="AudioStream" uid="uid://dbpkroe5isn6a" path="res://reddodge.wav" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://fthy5rdr8jr5" path="res://death.wav" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bc8mxp023svmv" path="res://play.wav" id="6_272bh"]
 [ext_resource type="Script" uid="uid://b2si7w13wo1o7" path="res://canvas_layer.gd" id="7_272bh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5vw27"]
+texture = ExtResource("3_5vw27")
+modulate_color = Color(0.19434911, 0.19434932, 0.1943492, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
 radius = 31.04835
@@ -38,6 +43,15 @@ animations = [{
 
 [node name="Main" type="Node2D" unique_id=647091507]
 script = ExtResource("1_h2yge")
+
+[node name="Panel" type="Panel" parent="." unique_id=1888505797]
+offset_top = -3.0
+offset_right = 1152.0
+offset_bottom = 646.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5vw27")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1275794891]
+script = ExtResource("7_272bh")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=457960801]
 position = Vector2(576, 322)
@@ -76,9 +90,6 @@ stream = ExtResource("5_7mycd")
 
 [node name="Press" type="AudioStreamPlayer2D" parent="." unique_id=1489302200]
 stream = ExtResource("6_272bh")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1275794891]
-script = ExtResource("7_272bh")
 
 [node name="Label" type="Label" parent="." unique_id=1811261336]
 anchors_preset = 5

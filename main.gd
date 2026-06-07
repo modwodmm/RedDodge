@@ -12,6 +12,7 @@ var menu_instance
 
 #When game starts
 func _ready() -> void:
+	$Panel.visible = false
 	menu_instance = menu_scene.instantiate()
 	$CanvasLayer.add_child(menu_instance)
 	menu_instance.play.connect(_on_play)
@@ -23,6 +24,7 @@ func _ready() -> void:
 #When "Play" is pressed
 func _on_play() -> void:
 	game_state = GAMESTATE.Play
+	$Panel.visible = true
 	$Press.play()
 	$Background.stop()
 	score = 0
@@ -33,6 +35,7 @@ func _on_play() -> void:
 
 #When player dies
 func _on_player_died():
+	$Panel.visible = false
 	game_state = GAMESTATE.Dead
 	$Background.play()
 	$Death.play()
