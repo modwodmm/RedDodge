@@ -78,7 +78,6 @@ scale = Vector2(4.5624995, 4.4375)
 sprite_frames = SubResource("SpriteFrames_lquwl")
 
 [node name="Timer" type="Timer" parent="." unique_id=1336936813]
-wait_time = 0.5
 
 [node name="Background" type="AudioStreamPlayer2D" parent="." unique_id=1055954310]
 stream = ExtResource("4_1bvp3")

@@ -2,7 +2,9 @@ extends Node2D
 
 enum GAMESTATE {Play, Dead}
 var game_state = GAMESTATE.Dead
+var enemy_speed = 150
 
+var new_enemy
 const enemy_scene = preload("res://enemy.tscn")
 
 var score = 0
@@ -20,6 +22,7 @@ func _ready() -> void:
 	$Player.died.connect(_on_player_died)
 	$Player.visible = false
 	$Player.move = false
+	
 
 #When "Play" is pressed
 func _on_play() -> void:
@@ -71,13 +74,26 @@ func generate_position(new_enemy):
 
 #Generates enemies
 func _on_timer_timeout() -> void:
-	var new_enemy = enemy_scene.instantiate()
+	difficulty()
+	new_enemy = enemy_scene.instantiate()
+	new_enemy.speed = enemy_speed
 	generate_position(new_enemy)
 	add_child(new_enemy)
 	score += 1
+	
 	display_score()
 	
 #Displays score
 func display_score():
 	$Label.text = "Score: " + str(score)
 	
+func difficulty():
+	if score >= 150:
+		$Timer.wait_time = 0.5
+		enemy_speed = 300
+	elif score >= 100:
+		enemy_speed = 300
+		$Timer.wait_time = 1.0
+	elif score >= 50:
+		$Timer.wait_time = 0.5
+		enemy_speed = 150
